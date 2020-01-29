@@ -1,0 +1,37 @@
+/**
+ * jonathan.lareau@gmail.com
+ *
+ * To (re)generate proto :
+ * protoc --java_out=. *.proto
+ * protoc --plugin=protoc-gen-grpc-java=protoc-gen-grpc-java.exe --grpc-java_out="C:\workspace\go\src\github.com\jonathanlareau\ms-app-grpc-java\proto" --proto_path="C:\workspace\go\src\github.com\jonathanlareau\ms-app-grpc-java\proto" "services.proto"
+ * In this folder (proto)
+ *
+ * To get protoc : https://github.com/protocolbuffers/protobuf/releases
+ *
+ **/
+
+syntax = "proto3";
+
+package pb;
+
+message SayHiRequest {
+    string requestMsg = 1;
+}
+
+message SayHelloResponse {
+    string responseMsg = 1;
+}
+
+message SayByeResponse {
+    string responseMsg = 1;
+}
+
+service SayHelloService {
+    rpc Compute (SayHiRequest) returns (SayHelloResponse) {
+    }
+}
+
+service SayByeService {
+    rpc Compute (SayHiRequest) returns (SayByeResponse) {
+    }
+}
